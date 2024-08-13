@@ -1,6 +1,7 @@
 import express from 'express';
 import { knex } from 'knex';
 import dbConfig from './knexfile';
+import cors from 'cors';
 
 // DAL
 import { createEventDAL } from './dal/events.dal';
@@ -21,6 +22,7 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
+app.use(cors());
 
 app.use('/health', (req, res) => {
   res.json({ status: 'ok' });
