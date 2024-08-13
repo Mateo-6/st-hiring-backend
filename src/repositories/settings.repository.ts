@@ -21,10 +21,14 @@ export class SettingsRepository {
   }
 
   public async updateSettingsByClientId(clientId: number, newSettings: Settings): Promise<void> {
-    const db = await connectToMongo();
-    const collection = db.collection<Settings>(this.collectionName);
-
-    await collection.updateOne({ clientId }, { $set: newSettings }, { upsert: true });
+    try {
+      const db = await connectToMongo();
+      const collection = db.collection<Settings>(this.collectionName);
+      await collection.updateOne({ clientId }, { $set: newSettings }, { upsert: true });
+    } catch (error) {
+      console.error('Error updating settings in repository:', error);
+      throw error;
+    }
   }
 
   private getDefaultSettings(clientId: number): Settings {
