@@ -1,5 +1,5 @@
 import { Knex } from 'knex';
-import { Ticket } from '../entity/ticket';
+import { Ticket } from '../../domain/entities/ticket';
 
 export interface TicketsDAL {
   getTicketsByEvent(eventId: number): Promise<Ticket[]>;
@@ -11,4 +11,4 @@ export const createTicketDAL = (knex: Knex): TicketsDAL => {
       return await knex<Ticket>('tickets').select('*').where('event_id', eventId);
     },
   };
-}
+};

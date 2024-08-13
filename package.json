@@ -11,13 +11,14 @@
     "scripts": {
         "start": "yarn nodemon src/index.ts",
         "test": "jest",
-        "migrations:make": "yarn knex migrate:make --migrations-directory src/database/migrations ",
-        "migrations:latest": "yarn knex migrate:latest --knexfile ./src/knexfile.ts --migrations-directory ./database/migrations",
-        "migrations:down": "yarn knex migrate:down --knexfile ./src/knexfile.ts --migrations-directory ./database/migrations",
-        "db:seed": "yarn knex seed:run --knexfile ./src/knexfile.ts --migrations-directory ./database/seeds"
+        "migrations:make": "yarn knex migrate:make --migrations-directory src/utils/infrasctruture/database/migrations ",
+        "migrations:latest": "yarn knex migrate:latest --knexfile ./src/utils/infrasctruture/database/knexfile.ts --migrations-directory ./migrations",
+        "migrations:down": "yarn knex migrate:down --knexfile ./src/utils/infrasctruture/database/knexfile.ts --migrations-directory ./migrations",
+        "db:seed": "yarn knex seed:run --knexfile ./src/utils/infrasctruture/database/knexfile.ts --migrations-directory ./utils/infrasctruture/database/seeds"
     },
     "packageManager": "yarn@3.6.1",
     "dependencies": {
+        "cors": "^2.8.5",
         "express": "4.19.2",
         "joi": "^17.13.3",
         "knex": "^3.1.0",
@@ -27,6 +28,7 @@
     "devDependencies": {
         "@faker-js/faker": "^8.4.1",
         "@tsconfig/node18": "^18.2.4",
+        "@types/cors": "^2.8.17",
         "@types/express": "^4.17.21",
         "@types/jest": "^29.5.12",
         "@types/node": "^18.11.9",
