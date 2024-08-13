@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { SettingsRepository } from '../repositories/settings.repository';
-import { settingsSchema } from '../validate/settings';
+import { SettingsRepository } from '../adapters/settings-repository';
+import { settingsSchema } from '../../application/validate/settings';
 
 const repository = new SettingsRepository();
 

@@ -1,14 +1,14 @@
 import request from 'supertest';
 import express from 'express';
-import { SettingsRepository } from '../repositories/settings.repository';
-import { updateSettings, getSettings } from '../controllers/settings';
+import { SettingsRepository } from '../modules/app-settings/infra/adapters/settings-repository';
+import { updateSettings, getSettings } from '../modules/app-settings/infra/controller/settings';
 
 const app = express();
 app.use(express.json());
 app.put('/settings/:clientId', updateSettings);
 app.get('/settings/:clientId', getSettings);
 
-jest.mock('../repositories/settings.repository');
+jest.mock('../modules/app-settings/infra/adapters/settings-repository');
 
 describe('PUT /settings/:clientId', () => {
   let mockUpdateSettingsByClientId: jest.Mock;

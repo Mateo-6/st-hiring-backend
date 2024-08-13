@@ -1,5 +1,5 @@
-import { connectToMongo } from '../database/mongo';
-import { Eenum, Settings } from '../entity/settings';
+import { connectToMongo } from '../../../../utils/infrasctruture/database/mongo';
+import { Eenum, Settings } from '../../domain/entities/settings';
 
 export class SettingsRepository {
   private collectionName = 'settings';
