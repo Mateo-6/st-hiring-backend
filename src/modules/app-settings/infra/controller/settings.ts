@@ -15,6 +15,16 @@ export async function getSettings(req: Request, res: Response): Promise<void> {
   }
 }
 
+export async function getClientId(req: Request, res: Response): Promise<void> {
+  try {
+    const settings = await repository.getClientId();
+    res.json(settings);
+  } catch (error) {
+    console.error('Error getting settings:', error);
+    res.status(500).json({ message: 'Error retrieving settings' });
+  }
+}
+
 export async function updateSettings(req: Request, res: Response): Promise<void> {
   const clientId = parseInt(req.params.clientId, 10);
   const newSettings = req.body;

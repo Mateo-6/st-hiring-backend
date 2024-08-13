@@ -20,6 +20,15 @@ export class SettingsRepository {
     return settings;
   }
 
+  public async getClientId(): Promise<any> {
+    const db = await connectToMongo();
+    const collection = db.collection<Settings>(this.collectionName);
+
+    let ids = await collection.find({}, { projection: { clientId: 1 } }).toArray();
+
+    return ids;
+  }
+
   public async updateSettingsByClientId(clientId: number, newSettings: Settings): Promise<void> {
     try {
       const db = await connectToMongo();
