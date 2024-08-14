@@ -1,3 +1,6 @@
+# API Doc
+DOC: [link](https://documenter.getpostman.com/view/6566451/2sA3s6EUpg)
+
 # Seetickets Backend test
 
 Welcome to the Seetickets backend test for new Hires (Mid Level). The purpose of this test is to evaluate a few assigned tasks given a codebase.
