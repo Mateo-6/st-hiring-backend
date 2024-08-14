@@ -8,13 +8,13 @@ export class SettingsRepository {
     const db = await connectToMongo();
     const collection = db.collection<Settings>(this.collectionName);
 
-    let settings = await collection.findOne({ clientId });
+    let settings = await collection.findOne({ clientId }, { projection: { _id: 0 } });
 
     if (!settings) {
       const newSettings = this.getDefaultSettings(clientId);
-      const newSettingSaved = await collection.insertOne(newSettings);
+      await collection.insertOne(newSettings);
 
-      return { _id: newSettingSaved.insertedId, ...newSettings };
+      return newSettings;
     }
 
     return settings;
