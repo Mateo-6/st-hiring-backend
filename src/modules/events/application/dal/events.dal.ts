@@ -21,7 +21,7 @@ export const createEventDAL = (knex: Knex): EventDAL => {
         that causes this problem by calling the getTicketsByEvent function, and optimizing 
         the sqlquery so that it allows obtaining the data without resorting to n number of extra queries.
 
-        This improvement made the endpoint respond from 400ms-500ms(Soon) to 100ms-150ms(approximately)
+        This improvement made the endpoint respond from 400ms-500ms(Soon) to 100ms-200ms(approximately)
       */
       const eventsWithTickets = await knex<Event>('events as e')
         .select('e.*', knex.raw('json_agg(t.*) as availableTickets'))
