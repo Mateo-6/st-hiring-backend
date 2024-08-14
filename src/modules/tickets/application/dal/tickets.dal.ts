@@ -8,7 +8,10 @@ export interface TicketsDAL {
 export const createTicketDAL = (knex: Knex): TicketsDAL => {
   return {
     async getTicketsByEvent(eventId): Promise<Ticket[]> {
-      return await knex<Ticket>('tickets').select('*').where('event_id', eventId);
+      // Using the improved events query, this query will not be executed anymore
+      return await knex<Ticket>('tickets as t')
+        .select('*')
+        .whereRaw(`event_id = ${eventId} AND t.status = 'available'`);
     },
   };
 };
